@@ -11,7 +11,7 @@ In this task, Git and GitHub workflows were practiced to understand collaborativ
 
 Version control helps track changes in source code over time. Git is a distributed version control system that allows multiple developers to work collaboratively on the same project.
 
-Commands Used:
+**Commands Used:**
 
 ```
 git init
@@ -22,7 +22,7 @@ git remote add origin <repo-link>
 git push -u origin main
 ```
 
-Screenshots:
+**Screenshots:**
 
 ![SS1](GitBash-SS-1.png)
 ![SS2](GitBash-SS-2.png)
@@ -33,14 +33,14 @@ Screenshots:
 
 Git rebase helps integrate changes from one branch into another while maintaining a cleaner commit history.
 
-Commands Used:
+**Commands Used:**
 
 ```
 git rebase main
 git rebase --continue
 ```
 
-Screenshots:
+**Screenshots:**
 
 ![SS5](GitBash-SS-5.png)
 ![SS6](GitBash-SS-6.png)
@@ -52,14 +52,14 @@ Screenshots:
 
 Branches are used to develop features independently without affecting the main branch.
 
-Commands Used:
+**Commands Used:
 
 ```
 git checkout -b feature-branch
 git branch
 ```
 
-Screenshots:
+**Screenshots:**
 
 ![SS3](GitBash-SS-3.png)
 ![SS4](GitBash-SS-4.png)
@@ -71,7 +71,7 @@ Screenshots:
 An open-source repository was explored and contributions were made through commits and pull requests.
 
 
-Screenshots:
+**Screenshots:**
 
 ![GSS1](GitHub-SS-1.png)
 ![GSS2](GitHub-SS-2.png)
@@ -82,14 +82,14 @@ Screenshots:
 
 Git revert is used to undo commits safely, while git cherry-pick applies selected commits from one branch to another.
 
-Commands Used:
+**Commands Used:**
 
 ```
 git revert <commit-id>
 git cherry-pick <commit-id>
 ```
 
-Screenshots:
+**Screenshots:**
 
 ![SS9](GitBash-SS-9.png)
 ![SS10](GitBash-SS-10.png)
@@ -100,14 +100,14 @@ Screenshots:
 
 Git config allows customisation of user identity and workflow settings. It can also be used to view the details, if already set.
 
-Commands Used:
+**Commands Used:**
 
 ```
 git config --global user.name
 git config --global user.email
 ```
 
-Screenshots:
+**Screenshots:**
 
 ![SS11](GitBash-SS-11.png)
 
@@ -136,14 +136,14 @@ Screenshots:
 
 Docker images were pulled from Docker Hub and stored locally in the system.
 
-Commands Used:
+**Commands Used:**
 
 ```
 docker pull nginx
 docker images
 ```
 
-Screenshot:
+**Screenshot:**
 
 ![DSS1](Docker-1.png)
 
@@ -153,14 +153,14 @@ Screenshot:
 
 An nginx container was created and executed locally using Docker CLI commands. Port mapping was used to access the application through the browser.
 
-Commands Used:
+**Commands Used:**
 
 ```
 docker run -d --name mynginx -p 8080:80 nginx
 docker ps
 ```
 
-Screenshots:
+**Screenshots:**
 
 ![DSS2](Docker-2.jpg)
 
@@ -170,7 +170,7 @@ Screenshots:
 
 Docker logs and inspect commands were used to monitor container activity and understand container status information.
 
-Commands Used:
+**Commands Used:**
 
 ```
 docker logs mynginx --tail 5
@@ -187,7 +187,7 @@ Screenshot:
 
 Container lifecycle operations such as restart, stop, and remove were performed successfully.
 
-Commands Used:
+**Commands Used:**
 
 ```
 docker restart mynginx
@@ -217,7 +217,7 @@ FROM nginx:latest
 COPY index.html /usr/share/nginx/html/index.html
 ```
 
-Commands Used:
+**Commands Used:**
 
 ```
 docker build -t mywebsite .
@@ -227,7 +227,7 @@ docker rm -f website-container
 docker rmi mywebsite
 ```
 
-Screenshots:
+**Screenshots:**
 
 ![DFSS1](Dockerfile-1.png)
 ![DFSS2](Dockerfile-2.jpg)
@@ -270,7 +270,7 @@ spec:
 
 The Minikube cluster was started using the Docker driver and the Pod manifest was deployed using kubectl.
 
-Commands Used:
+**Commands Used:**
 
 ```
 minikube start --driver=docker
@@ -284,7 +284,7 @@ The manifest was successfully applied and the nginx-pod was created.
 
 The Pod's status was verified and additional information was obtained using kubectl.
 
-Commands Used:
+**Commands Used:**
 
 ```
 minikube kubectl -- get pods
@@ -333,7 +333,7 @@ spec:
 
 The Deployment was configured with 3 replicas, allowing Kubernetes to maintain three instances of the Nginx application.
 
-Commands Used:
+**Commands Used:**
 
 ```
 minikube kubectl -- apply -f deployment.yaml
@@ -360,7 +360,7 @@ spec:
         targetPort: 80
 ```
 
-Commands Used:
+**Commands Used:**
 
 ```
 minikube kubectl -- apply -f service-clusterip.yaml
@@ -388,7 +388,7 @@ spec:
         nodePort: 30080
 ```
 
-Commands Used:
+**Commands Used:**
 
 ```
 minikube kubectl -- apply -f service-nodeport.yaml
@@ -489,85 +489,85 @@ Explored various networking devices including routers, switches, hubs, modems, a
 
 ---
 
-## Task 7: Protocols — DNS
+## Task 7: DNS
 
 Studied the Domain Name System (DNS) and understood how domain names are translated into IP addresses. Learned how DNS makes it possible to access network services using human-readable names instead of numerical IP addresses.
 
 ---
 
-## Task 8: Protocols — DHCP
+## Task 8: DHCP
 
-Learned how DHCP automatically provides devices with essential network configuration such as IP address, subnet mask, default gateway, and DNS server. Studied the DORA process — Discover, Offer, Request, and Acknowledge — and how devices obtain and renew IP addresses.
+Learned how DHCP automatically provides devices with essential network configuration such as IP address, subnet mask, default gateway, and DNS server. Studied the DORA process - Discover, Offer, Request, and Acknowledge, and how devices obtain and renew IP addresses.
 
 ---
 
-## Task 9: Protocols — ICMP
+## Task 9: ICMP
 
 Studied ICMP and its role in network diagnostics and error reporting. Learned how ping uses ICMP Echo Request/Reply messages to test connectivity and how traceroute uses TTL and ICMP responses to identify network hops.
 
 ---
 
-## Task 10: Protocols — HTTP(S)
+## Task 10: HTTP(S)
 
 Explored HTTP and HTTPS and how browsers communicate with web servers. Learned how HTTPS uses SSL/TLS to secure communication and examined HTTP requests, status codes, and TLS certificate information using browser Developer Tools.
 
 ---
 
-## Task 11: Protocols — Other Important Models
+## Task 11: Protocols: Other Important Models
 
 Studied the OSI model and its seven layers, along with the roles of TCP, UDP, and IP in network communication. Understood how data is encapsulated through the layers, from application data to segments, packets, frames, and finally transmitted bits.
 
 ---
 
-## Task 12: Windows — Introduction
+## Task 12: Introduction to Windows
 
 Explored the Windows operating system and its basic administration features. Learned about file organization, Windows Updates, application installation and removal, system settings, and using Task Manager to monitor processes and system resources.
 
 ---
 
-## Task 13: Windows — PowerShell
+## Task 13: Windows PowerShell
 
 Studied PowerShell as a command-line shell and scripting environment for system administration and automation. Learned how PowerShell works with objects rather than plain text, its relationship with the .NET framework, and the evolution from Windows PowerShell to the cross-platform PowerShell Core.
 
 ---
 
-## Task 14: Windows — PowerShell vs CMD
+## Task 14: PowerShell vs CMD
 
 Compared Windows Command Prompt and PowerShell in terms of functionality, scripting, automation, and system administration. Learned how PowerShell provides more advanced capabilities through cmdlets, object-based data handling, and remote administration.
 
 ---
 
-## Task 15: Windows — System32
+## Task 15: Windows System32
 
 Explored the Windows directory structure and the purpose of environment variables such as %windir%. Learned about the System32 directory and its role in storing critical Windows system files and utilities.
 
 ---
 
-## Task 16: Windows — User Accounts & UAC
+## Task 16: Windows User Accounts & UAC
 
 Learned about Administrator and Standard User accounts and how their privileges differ. Explored Windows user profiles, the C:\Users directory, local user and group management, and the role of permissions in controlling system access.
 
 ---
 
-## Task 17: Windows — Security
+## Task 17: Windows Security
 
 Studied Windows' built-in security features, including virus and threat protection, application and browser protection, and device security. Also learned how the Windows Firewall controls network traffic and the differences between Domain, Private, and Public network profiles.
 
 ---
 
-## Task 18: Linux — Introduction
+## Task 18: Introduction to Linux
 
 Introduced Linux and its use across servers, automotive systems, retail infrastructure, and other systems requiring reliability and efficiency. Learned about Linux distributions such as Ubuntu and Debian and the flexibility provided by its open-source nature.
 
 ---
 
-## Task 19: Linux — File Systems
+## Task 19: Linux File Systems
 
 Learned fundamental Linux file and directory management commands including touch, mkdir, cp, mv, rm, and file. Practiced creating, copying, moving, renaming, deleting, and identifying files and directories using the command line.
 
 ---
 
-## Task 20: Cryptography — Part 1
+## Task 20: Cryptography: Part 1
 
 Studied the fundamentals of cryptography and its role in maintaining confidentiality, integrity, and authenticity. Learned the relationship between plaintext, ciphertext, ciphers, keys, encryption, and decryption, along with the importance of cryptography in secure digital communication.
 
