@@ -11,7 +11,7 @@ In this task, Git and GitHub workflows were practiced to understand collaborativ
 
 Version control helps track changes in source code over time. Git is a distributed version control system that allows multiple developers to work collaboratively on the same project.
 
-### Commands Used
+Commands Used:
 
 ```
 git init
@@ -22,7 +22,7 @@ git remote add origin <repo-link>
 git push -u origin main
 ```
 
-### Screenshots
+Screenshots:
 
 ![SS1](GitBash-SS-1.png)
 ![SS2](GitBash-SS-2.png)
@@ -33,14 +33,14 @@ git push -u origin main
 
 Git rebase helps integrate changes from one branch into another while maintaining a cleaner commit history.
 
-### Commands Used
+Commands Used:
 
 ```
 git rebase main
 git rebase --continue
 ```
 
-### Screenshot
+Screenshots:
 
 ![SS5](GitBash-SS-5.png)
 ![SS6](GitBash-SS-6.png)
@@ -52,14 +52,14 @@ git rebase --continue
 
 Branches are used to develop features independently without affecting the main branch.
 
-### Commands Used
+Commands Used:
 
 ```
 git checkout -b feature-branch
 git branch
 ```
 
-### Screenshot
+Screenshots:
 
 ![SS3](GitBash-SS-3.png)
 ![SS4](GitBash-SS-4.png)
@@ -71,7 +71,7 @@ git branch
 An open-source repository was explored and contributions were made through commits and pull requests.
 
 
-### Screenshot
+Screenshots:
 
 ![GSS1](GitHub-SS-1.png)
 ![GSS2](GitHub-SS-2.png)
@@ -82,14 +82,14 @@ An open-source repository was explored and contributions were made through commi
 
 Git revert is used to undo commits safely, while git cherry-pick applies selected commits from one branch to another.
 
-### Commands Used
+Commands Used:
 
 ```
 git revert <commit-id>
 git cherry-pick <commit-id>
 ```
 
-### Screenshot
+Screenshots:
 
 ![SS9](GitBash-SS-9.png)
 ![SS10](GitBash-SS-10.png)
@@ -100,14 +100,14 @@ git cherry-pick <commit-id>
 
 Git config allows customisation of user identity and workflow settings. It can also be used to view the details, if already set.
 
-### Commands Used
+Commands Used:
 
 ```
 git config --global user.name
 git config --global user.email
 ```
 
-### Screenshot
+Screenshots:
 
 ![SS11](GitBash-SS-11.png)
 
@@ -143,7 +143,7 @@ docker pull nginx
 docker images
 ```
 
-### Screenshot
+Screenshot:
 
 ![DSS1](Docker-1.png)
 
@@ -160,7 +160,7 @@ docker run -d --name mynginx -p 8080:80 nginx
 docker ps
 ```
 
-### Screenshot
+Screenshots:
 
 ![DSS2](Docker-2.jpg)
 
@@ -177,7 +177,7 @@ docker logs mynginx --tail 5
 docker inspect mynginx --format='Status: {{.State.Status}}'
 ```
 
-### Screenshot
+Screenshot:
 
 ![DSS3](Docker-3.png)
 
@@ -196,7 +196,7 @@ docker rm mynginx
 docker rmi nginx
 ```
 
-### Screenshot
+Screenshots:
 
 ![DSS4](Docker-4.jpg)
 ![DSS5](Docker-5.jpg)
@@ -227,7 +227,7 @@ docker rm -f website-container
 docker rmi mywebsite
 ```
 
-### Screenshots
+Screenshots:
 
 ![DFSS1](Dockerfile-1.png)
 ![DFSS2](Dockerfile-2.jpg)
