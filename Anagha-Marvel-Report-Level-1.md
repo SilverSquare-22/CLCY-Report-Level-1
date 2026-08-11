@@ -13,7 +13,6 @@ Version control helps track changes in source code over time. Git is a distribut
 
 ### Commands Used
 
-
 ```
 git init
 git status
@@ -22,7 +21,6 @@ git commit -m "commit message"
 git remote add origin <repo-link>
 git push -u origin main
 ```
-
 
 ### Screenshots
 
@@ -138,7 +136,7 @@ git config --global user.email
 
 Docker images were pulled from Docker Hub and stored locally in the system.
 
-### Commands Used
+Commands Used:
 
 ```
 docker pull nginx
@@ -155,7 +153,7 @@ docker images
 
 An nginx container was created and executed locally using Docker CLI commands. Port mapping was used to access the application through the browser.
 
-### Commands Used
+Commands Used:
 
 ```
 docker run -d --name mynginx -p 8080:80 nginx
@@ -172,7 +170,7 @@ docker ps
 
 Docker logs and inspect commands were used to monitor container activity and understand container status information.
 
-### Commands Used
+Commands Used:
 
 ```
 docker logs mynginx --tail 5
@@ -189,7 +187,7 @@ docker inspect mynginx --format='Status: {{.State.Status}}'
 
 Container lifecycle operations such as restart, stop, and remove were performed successfully.
 
-### Commands Used
+Commands Used:
 
 ```
 docker restart mynginx
@@ -214,22 +212,241 @@ A simple static website was containerized using Docker. A Dockerfile was created
 
 ### Dockerfile
 
+```
 FROM nginx:latest
 COPY index.html /usr/share/nginx/html/index.html
+```
 
+Commands Used:
 
-### Commands Used
-
-1. docker build -t mywebsite .
-2. docker run -d --name website-container -p 8080:80 mywebsite
-3. docker ps
-4. docker rm -f website-container
-5. docker rmi mywebsite
+```
+docker build -t mywebsite .
+docker run -d --name website-container -p 8080:80 mywebsite
+docker ps
+docker rm -f website-container
+docker rmi mywebsite
+```
 
 ### Screenshots
 
 ![DFSS1](Dockerfile-1.png)
 ![DFSS2](Dockerfile-2.jpg)
+
+---
+
+## 4: Kubernetes Basics and Writing Pod Specs (Task 5)
+
+
+Kubernetes was explored using Minikube to understand basic container orchestration concepts and deploy a simple Nginx container.
+
+
+### Understanding Kubernetes Concepts
+
+The following core concepts were studied:
+
+* **Cluster:** A collection of machines that work together to run containerized workloads.
+* **Node:** A machine within the Kubernetes cluster that runs Pods.
+* **Pod:** The smallest deployable unit in Kubernetes, which contains one or more containers. In this task, the Pod contained an Nginx container.
+* **Control Plane:** The components responsible for managing the Kubernetes cluster, including scheduling and maintaining the desired state of workloads.
+
+Minikube was used to create a local Kubernetes cluster for the task.
+
+### Creating a Pod Manifest
+
+A Pod specification was created using a YAML manifest to deploy an Nginx container.
+
+```pod.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+    name: nginx-pod
+spec:
+    containers:
+        - name: nginx
+        image: nginx:latest
+```
+
+### Applying the Manifest
+
+The Minikube cluster was started using the Docker driver and the Pod manifest was deployed using kubectl.
+
+Commands Used:
+
+```
+minikube start --driver=docker
+minikube status
+minikube kubectl -- apply -f pod.yaml
+```
+
+The manifest was successfully applied and the nginx-pod was created.
+
+### Inspecting the Pod
+
+The Pod's status was verified and additional information was obtained using kubectl.
+
+Commands Used:
+
+```
+minikube kubectl -- get pods
+minikube kubectl -- describe pod nginx-pod
+minikube kubectl -- logs nginx-pod
+```
+
+The Pod reached the Running state with the Nginx container marked as ready. The describe command was used to inspect the Pod's configuration, container state, assigned IP, node, and events. The logs confirmed that the Nginx container initialized successfully.
+
+### Screenshots
+
+![K8S1](Kubernetes-1.png)
+![K8S2](Kubernetes-2.png)
+![K8S3](Kubernetes-3.png)
+
+---
+
+## 5: Deploying a Containerised Application on Kubernetes (Task 7)
+
+
+### Creating a Deployment
+
+A Deployment was created to manage multiple replicas of the Nginx application.
+
+```deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: nginx-deployment
+spec:
+    replicas: 3
+    selector:
+        matchLabels:
+        app: nginx
+    template:
+        metadata:
+            labels:
+                app: nginx
+        spec:
+            containers:
+                - name: nginx
+                image: nginx:1.27
+                ports:
+                    - containerPort: 80
+```
+
+The Deployment was configured with 3 replicas, allowing Kubernetes to maintain three instances of the Nginx application.
+
+Commands Used:
+
+```
+minikube kubectl -- apply -f deployment.yaml
+minikube kubectl -- get deployment
+minikube kubectl -- get pods
+```
+
+The Deployment was successfully created and all three replicas were verified to be running.
+
+### Exposing the Deployment using ClusterIP
+
+A ClusterIP Service was created to provide internal access to the Nginx Pods.
+
+```service-clusterip.yaml
+apiVersion: v1
+kind: Service
+metadata:
+    name: nginx-clusterip
+spec:
+    selector:
+        app: nginx
+    ports:
+        - port: 80
+        targetPort: 80
+```
+
+Commands Used:
+
+```
+minikube kubectl -- apply -f service-clusterip.yaml
+minikube kubectl -- get services
+```
+
+The Service was successfully created with the default ClusterIP type.
+
+### Exposing the Application using NodePort
+
+A NodePort Service was created to make the application accessible from the local machine.
+
+```service-nodeport.yaml
+apiVersion: v1
+kind: Service
+metadata:
+    name: nginx-nodeport
+spec:
+    type: NodePort
+    selector:
+        app: nginx
+    ports:
+        - port: 80
+        targetPort: 80
+        nodePort: 30080
+```
+
+Commands Used:
+
+```
+minikube kubectl -- apply -f service-nodeport.yaml
+minikube kubectl -- get services
+minikube service nginx-nodeport --url
+```
+
+The NodePort Service exposed the Nginx application externally, and the generated URL was accessed through a web browser. The Nginx welcome page was successfully displayed.
+
+### Scaling the Deployment
+
+The Deployment was scaled both up and down using `kubectl`.
+
+Scale up from 3 to 5 replicas:
+
+```
+minikube kubectl -- scale deployment nginx-deployment --replicas=5
+minikube kubectl -- get pods
+```
+
+Scale down from 5 to 2 replicas:
+
+```
+minikube kubectl -- scale deployment nginx-deployment --replicas=2
+minikube kubectl -- get pods
+```
+
+The number of running Pods was successfully increased to five and subsequently reduced to two.
+
+### Rolling Update
+
+A rolling update was performed by changing the Nginx image version in `deployment.yaml` from:
+
+```
+nginx:1.27
+```
+
+to:
+
+```
+nginx:1.28
+```
+
+The updated Deployment was then applied:
+
+```
+minikube kubectl -- apply -f deployment.yaml
+minikube kubectl -- rollout status deployment/nginx-deployment
+```
+
+The rollout completed successfully, demonstrating how Kubernetes updates Pods managed by a Deployment while maintaining the desired replica count.
+
+### Screenshots
+
+![K8SD1](Kubernetes-Deploy-1.png)
+![K8SD2](Kubernetes-Deploy-2.png)
+![K8SD3](Kubernetes-Deploy-3.png)
+![K8SD4](Kubernetes-Deploy-4.png)
 
 ---
 
@@ -269,5 +486,89 @@ Studied how data is divided into packets and transmitted across networks. Unders
 ## Task 6: Networking Devices
 
 Explored various networking devices including routers, switches, hubs, modems, and access points. Understood their functions and importance in establishing and managing network communication.
+
+---
+
+## Task 7: Protocols — DNS
+
+Studied the Domain Name System (DNS) and understood how domain names are translated into IP addresses. Learned how DNS makes it possible to access network services using human-readable names instead of numerical IP addresses.
+
+---
+
+## Task 8: Protocols — DHCP
+
+Learned how DHCP automatically provides devices with essential network configuration such as IP address, subnet mask, default gateway, and DNS server. Studied the DORA process — Discover, Offer, Request, and Acknowledge — and how devices obtain and renew IP addresses.
+
+---
+
+## Task 9: Protocols — ICMP
+
+Studied ICMP and its role in network diagnostics and error reporting. Learned how ping uses ICMP Echo Request/Reply messages to test connectivity and how traceroute uses TTL and ICMP responses to identify network hops.
+
+---
+
+## Task 10: Protocols — HTTP(S)
+
+Explored HTTP and HTTPS and how browsers communicate with web servers. Learned how HTTPS uses SSL/TLS to secure communication and examined HTTP requests, status codes, and TLS certificate information using browser Developer Tools.
+
+---
+
+## Task 11: Protocols — Other Important Models
+
+Studied the OSI model and its seven layers, along with the roles of TCP, UDP, and IP in network communication. Understood how data is encapsulated through the layers, from application data to segments, packets, frames, and finally transmitted bits.
+
+---
+
+## Task 12: Windows — Introduction
+
+Explored the Windows operating system and its basic administration features. Learned about file organization, Windows Updates, application installation and removal, system settings, and using Task Manager to monitor processes and system resources.
+
+---
+
+## Task 13: Windows — PowerShell
+
+Studied PowerShell as a command-line shell and scripting environment for system administration and automation. Learned how PowerShell works with objects rather than plain text, its relationship with the .NET framework, and the evolution from Windows PowerShell to the cross-platform PowerShell Core.
+
+---
+
+## Task 14: Windows — PowerShell vs CMD
+
+Compared Windows Command Prompt and PowerShell in terms of functionality, scripting, automation, and system administration. Learned how PowerShell provides more advanced capabilities through cmdlets, object-based data handling, and remote administration.
+
+---
+
+## Task 15: Windows — System32
+
+Explored the Windows directory structure and the purpose of environment variables such as %windir%. Learned about the System32 directory and its role in storing critical Windows system files and utilities.
+
+---
+
+## Task 16: Windows — User Accounts & UAC
+
+Learned about Administrator and Standard User accounts and how their privileges differ. Explored Windows user profiles, the C:\Users directory, local user and group management, and the role of permissions in controlling system access.
+
+---
+
+## Task 17: Windows — Security
+
+Studied Windows' built-in security features, including virus and threat protection, application and browser protection, and device security. Also learned how the Windows Firewall controls network traffic and the differences between Domain, Private, and Public network profiles.
+
+---
+
+## Task 18: Linux — Introduction
+
+Introduced Linux and its use across servers, automotive systems, retail infrastructure, and other systems requiring reliability and efficiency. Learned about Linux distributions such as Ubuntu and Debian and the flexibility provided by its open-source nature.
+
+---
+
+## Task 19: Linux — File Systems
+
+Learned fundamental Linux file and directory management commands including touch, mkdir, cp, mv, rm, and file. Practiced creating, copying, moving, renaming, deleting, and identifying files and directories using the command line.
+
+---
+
+## Task 20: Cryptography — Part 1
+
+Studied the fundamentals of cryptography and its role in maintaining confidentiality, integrity, and authenticity. Learned the relationship between plaintext, ciphertext, ciphers, keys, encryption, and decryption, along with the importance of cryptography in secure digital communication.
 
 ---
