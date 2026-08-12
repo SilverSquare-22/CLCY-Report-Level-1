@@ -573,13 +573,13 @@ Studied the fundamentals of cryptography and its role in maintaining confidentia
 
 ---
 
-## 21: Cryptography – Part 2 (Task 21)
+## 21: Cryptography - Part 2 (Task 21)
 
 Studied symmetric and asymmetric encryption, including AES, RSA, 3DES and ECC. Learned about shared keys, public/private keys, and the mathematical problems underlying asymmetric encryption.
 
 ---
 
-## 22: CyberSecurity Principles – CIA (Task 23)
+## 22: CyberSecurity Principles - CIA (Task 23)
 
 Introduced the **CIA Triad**:
 
@@ -589,7 +589,7 @@ Introduced the **CIA Triad**:
 
 ---
 
-## 23: CIA Triad – Explanation (Task 24)
+## 23: CIA Triad - Explanation (Task 24)
 
 Explored real-world examples of Confidentiality, Integrity and Availability and understood how encryption, access controls, and reliable infrastructure help protect these principles.
 
@@ -601,6 +601,6 @@ Introduced offensive security and ethical hacking. Learned how penetration testi
 
 ---
 
-## 25: Red Teaming – Practical (Task 26)
+## 25: Red Teaming - Practical (Task 26)
 
 Learned key concepts including red teaming, penetration testing, vulnerabilities, exploits and scope. Practised basic web enumeration by checking potential hidden paths and learned how **Gobuster** can automate directory discovery.
