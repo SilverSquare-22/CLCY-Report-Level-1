@@ -1,7 +1,7 @@
 # Cloud Computing
 
 
-## 1: Working with Git and GitHub basics (Task 1)
+## Task 1: Working with Git and GitHub basics
 
 
 In this task, Git and GitHub workflows were practiced to understand collaborative software development. Actions such as editing, staging, committing, pushing, along with creation of branches and pull requests were performed.
@@ -113,7 +113,7 @@ git config --global user.email
 
 ---
 
-## 2: Exploring Docker Fundamentals (Task 2)
+## Task 2: Exploring Docker Fundamentals
 
 
 ### Difference Between Containers and Virtual Machines
@@ -204,7 +204,7 @@ Screenshots:
 
 ---
 
-## 3: Dockerizing a Simple Application (Task 3)
+## Task 3: Dockerizing a Simple Application
 
 
 A simple static website was containerized using Docker. A Dockerfile was created using the nginx base image. The HTML file was copied into the nginx web server directory using the COPY instruction.
@@ -234,7 +234,57 @@ docker rmi mywebsite
 
 ---
 
-## 4: Kubernetes Basics and Writing Pod Specs (Task 5)
+## Task 4: Launch and Manage an AWS EC2 Instance
+
+
+AWS EC2 was explored by launching a Linux virtual machine and configuring its network access. A security group was configured to allow SSH on port 22 and HTTP on port 80. The instance was accessed securely using an SSH key pair (`.pem` file).
+
+### Connecting to the EC2 Instance
+
+The instance was connected using SSH with the generated key pair.
+
+**Command Used:**
+
+```bash
+ssh -i "clcy-ec2-key.pem" ec2-user@<public-dns>
+```
+
+The connection was established successfully and the Amazon Linux environment was accessed.
+
+### Installing and Managing Nginx
+
+Nginx was installed and configured as a web server on the EC2 instance.
+
+**Commands Used:**
+
+```bash
+sudo dnf update -y
+sudo dnf install nginx -y
+sudo systemctl start nginx
+sudo systemctl enable nginx
+sudo systemctl status nginx
+```
+
+The Nginx service was successfully started and verified as active.
+
+### Accessing Nginx through the Public IP
+
+The EC2 instance's public IP was used to access the Nginx web server through a browser. The Nginx welcome page was displayed successfully, confirming that the instance was reachable over HTTP.
+
+### EC2 CPU and Memory
+
+EC2 instance types determine the available vCPUs, memory, and other resources. CPU credits on burstable instances such as the `t3.micro` allow the instance to temporarily use CPU performance above its baseline when required.
+
+### Screenshots
+
+![EC21](AWS-EC2-1.png)
+![EC22](AWS-EC2-2.png)
+![EC23](AWS-EC2-3.png)
+![EC25](AWS-EC2-4.png)
+
+---
+
+## Task 5: Kubernetes Basics and Writing Pod Specs
 
 
 Kubernetes was explored using Minikube to understand basic container orchestration concepts and deploy a simple Nginx container.
@@ -302,7 +352,44 @@ The Pod reached the Running state with the Nginx container marked as ready. The 
 
 ---
 
-## 5: Deploying a Containerised Application on Kubernetes (Task 7)
+## Task 6: Manage AWS S3 and IAM with CLI
+
+
+AWS IAM and S3 were explored using the AWS CLI. An IAM user was created and configured with S3 permissions, and the AWS CLI was configured to interact with AWS services. S3 bucket and object operations were performed, followed by applying a restricted IAM policy to demonstrate least-privilege access.
+
+### AWS CLI and S3 Operations
+
+The AWS CLI was configured with IAM credentials and used to manage an S3 bucket. A test file was created, uploaded to the bucket, listed, downloaded, and deleted.
+
+**Commands Used:**
+
+```powershell
+aws s3 mb s3://clcy-s3-bucket-silversquare22 --region ap-southeast-2
+aws s3 cp test.txt s3://clcy-s3-bucket-silversquare22/
+aws s3 ls s3://clcy-s3-bucket-silversquare22/
+aws s3 cp s3://clcy-s3-bucket-silversquare22/test.txt test-downloaded.txt
+aws s3 rm s3://clcy-s3-bucket-silversquare22/test.txt
+aws s3 rb s3://clcy-s3-bucket-silversquare22/
+```
+
+The S3 object operations were successfully performed using the CLI, demonstrating basic cloud storage management.
+
+### IAM Least-Privilege Policy
+
+A custom `CLCY-S3-LimitedAccess` policy was applied to restrict the IAM user's S3 permissions. The policy allows listing the specified bucket and reading, writing, and deleting objects, without granting unrestricted bucket-management permissions.
+
+The restricted permissions were validated by attempting operations outside the policy scope. Bucket creation and deletion were denied with `AccessDenied`, demonstrating the effect of least-privilege access control.
+
+### Screenshots
+
+![AWSIAM1](AWS-IAM-S3-1.png)
+![AWSIAM2](AWS-IAM-S3-2.png)
+![AWSIAM3](AWS-IAM-S3-3.png)
+![AWSIAM4](AWS-IAM-S3-4.png)
+
+---
+
+## Task 7: Deploying a Containerised Application on Kubernetes
 
 
 ### Creating a Deployment
@@ -450,137 +537,204 @@ The rollout completed successfully, demonstrating how Kubernetes updates Pods ma
 
 ---
 
+## Task 8: Use Kubernetes Secrets and Environment Variables
+
+
+Kubernetes ConfigMaps and Secrets were used to manage application configuration and sensitive AWS credentials separately. A ConfigMap was created for non-sensitive values, while an AWS credential Secret was injected into a Deployment as environment variables. The Pod was verified to receive the configuration and credentials without exposing the actual secret values.
+
+### ConfigMap and Deployment
+
+The ConfigMap was applied and the `aws-env-test` Deployment was created successfully. The resulting Pod was running successfully.
+
+![K8S8-1](K8S8-1.png)
+
+### Verifying Environment Variables
+
+The Pod was accessed using `kubectl exec` to verify the injected values. The ConfigMap values were displayed, while the AWS credentials were checked only for their presence using `SET`, keeping the actual credentials hidden.
+
+![K8S8-2](K8S8-2.png)
+
+---
+
+## Task 9: Deploy an App to Push Files from Kubernetes to S3
+
+
+A Flask-based file-upload application was containerized using Docker and deployed on Minikube. The application used AWS credentials provided through Kubernetes Secrets and was exposed using a NodePort service. A test file was uploaded through the application and verified in the S3 bucket, demonstrating the complete Kubernetes-to-S3 workflow.
+
+### Containerizing and Deploying the Application
+
+The Flask application was built into a Docker image named `s3-upload-app:1.0` and deployed as a Kubernetes Pod.
+
+![K8S9-1](K8S9-1.png)
+
+![K8S9-2](K8S9-2.png)
+
+### Exposing the Application
+
+A NodePort Service was created for the application, allowing the Flask interface to be accessed through the Minikube-generated local URL.
+
+![K8S9-3](K8S9-3.png)
+
+### Uploading and Verifying the File
+
+The Flask application successfully received the uploaded file, as shown by the successful `POST` request in the application logs.
+
+![K8S9-4](K8S9-4.png)
+
+The application interface confirmed that `test-upload.txt` was uploaded successfully.
+
+![K8S9-5](K8S9-5.png)
+
+Finally, the uploaded file was verified in the AWS S3 bucket, confirming that the file was successfully transferred from the Kubernetes-hosted application to cloud storage.
+
+![K8S9-6](K8S9-6.png)
+
+---
+
 # Cybersecurity
 
 
-## 1: Introduction to Computer Networking (Task 1)
+## Task 1: Introduction to Computer Networking
 
 Studied the fundamentals of computer networking and understood how computers and devices communicate with each other through connected networks. Learned about the importance of communication protocols and data sharing in modern networks.
 
 ---
 
-## 2: Internet (Task 2)
+## Task 2: Internet
 
 Explored the working of the Internet and understood how global communication takes place between interconnected devices. Learned about web communication, protocols, and Internet-based services.
 
 ---
 
-## 3: IP Address (Task 3)
+## Task 3: IP Address
 
 Understood the concept of IP addresses and their role in uniquely identifying devices in a network. Learned the difference between public and private IP addresses and their importance in communication.
 
 ---
 
-## 4: Ports (Task 4)
+## Task 4: Ports
 
 Learned how ports are used to establish communication between applications and network services. Studied commonly used ports such as HTTP (80) and HTTPS (443).
 
 ---
 
-## 5: Packets and Frames (Task 5)
+## Task 5: Packets and Frames
 
 Studied how data is divided into packets and transmitted across networks. Understood the role of frames in data link layer communication and how encapsulation helps in reliable data transfer.
 
 ---
 
-## 6: Networking Devices (Task 6)
+## Task 6: Networking Devices
 
 Explored various networking devices including routers, switches, hubs, modems, and access points. Understood their functions and importance in establishing and managing network communication.
 
 ---
 
-## 7: DNS (Task 7)
+## Task 7: DNS
 
 Studied the Domain Name System (DNS) and understood how domain names are translated into IP addresses. Learned how DNS makes it possible to access network services using human-readable names instead of numerical IP addresses.
 
 ---
 
-## 8: DHCP (Task 8)
+## Task 8: DHCP
 
 Learned how DHCP automatically provides devices with essential network configuration such as IP address, subnet mask, default gateway, and DNS server. Studied the DORA process - Discover, Offer, Request, and Acknowledge, and how devices obtain and renew IP addresses.
 
 ---
 
-## 9: ICMP (Task 9)
+## Task 9: ICMP
 
 Studied ICMP and its role in network diagnostics and error reporting. Learned how ping uses ICMP Echo Request/Reply messages to test connectivity and how traceroute uses TTL and ICMP responses to identify network hops.
 
 ---
 
-## 10: HTTP(S) (Task 10)
+## Task 10: HTTP(S)
 
 Explored HTTP and HTTPS and how browsers communicate with web servers. Learned how HTTPS uses SSL/TLS to secure communication and examined HTTP requests, status codes, and TLS certificate information using browser Developer Tools.
 
 ---
 
-## 11: Protocols: Other Important Models (Task 11)
+## Task 11: Protocols: Other Important Models
 
 Studied the OSI model and its seven layers, along with the roles of TCP, UDP, and IP in network communication. Understood how data is encapsulated through the layers, from application data to segments, packets, frames, and finally transmitted bits.
 
 ---
 
-## 12: Introduction to Windows (Task 12)
+## Task 12: Introduction to Windows
 
 Explored the Windows operating system and its basic administration features. Learned about file organization, Windows Updates, application installation and removal, system settings, and using Task Manager to monitor processes and system resources.
 
 ---
 
-## 13: Windows PowerShell (Task 13)
+## Task 13: Windows PowerShell
 
 Studied PowerShell as a command-line shell and scripting environment for system administration and automation. Learned how PowerShell works with objects rather than plain text, its relationship with the .NET framework, and the evolution from Windows PowerShell to the cross-platform PowerShell Core.
 
 ---
 
-## 14: PowerShell vs CMD (Task 14)
+## Task 14: PowerShell vs CMD
 
 Compared Windows Command Prompt and PowerShell in terms of functionality, scripting, automation, and system administration. Learned how PowerShell provides more advanced capabilities through cmdlets, object-based data handling, and remote administration.
 
 ---
 
-## 15: Windows System32 (Task 15)
+## Task 15: Windows System32
 
 Explored the Windows directory structure and the purpose of environment variables such as %windir%. Learned about the System32 directory and its role in storing critical Windows system files and utilities.
 
 ---
 
-## 16: Windows User Accounts & UAC (Task 16)
+## Task 16: Windows User Accounts & UAC
 
 Learned about Administrator and Standard User accounts and how their privileges differ. Explored Windows user profiles, the C:\Users directory, local user and group management, and the role of permissions in controlling system access.
 
 ---
 
-## 17: Windows Security (Task 17)
+## Task 17: Windows Security
 
 Studied Windows' built-in security features, including virus and threat protection, application and browser protection, and device security. Also learned how the Windows Firewall controls network traffic and the differences between Domain, Private, and Public network profiles.
 
 ---
 
-## 18: Introduction to Linux (Task 18)
+## Task 18: Introduction to Linux
 
 Introduced Linux and its use across servers, automotive systems, retail infrastructure, and other systems requiring reliability and efficiency. Learned about Linux distributions such as Ubuntu and Debian and the flexibility provided by its open-source nature.
 
 ---
 
-## 19: Linux File Systems (Task 19)
+## Task 19: Linux File Systems
 
 Learned fundamental Linux file and directory management commands including touch, mkdir, cp, mv, rm, and file. Practiced creating, copying, moving, renaming, deleting, and identifying files and directories using the command line.
 
 ---
 
-## 20: Cryptography - Part 1 (Task 20)
+## Task 20: Cryptography - Part 1
 
 Studied the fundamentals of cryptography and its role in maintaining confidentiality, integrity, and authenticity. Learned the relationship between plaintext, ciphertext, ciphers, keys, encryption, and decryption, along with the importance of cryptography in secure digital communication.
 
 ---
 
-## 21: Cryptography - Part 2 (Task 21)
+## Task 21: Cryptography - Part 2
 
 Studied symmetric and asymmetric encryption, including AES, RSA, 3DES and ECC. Learned about shared keys, public/private keys, and the mathematical problems underlying asymmetric encryption.
 
 ---
 
-## 22: CyberSecurity Principles - CIA (Task 23)
+## Task 22: Cipher Breaker Challenge
 
+Studied classical ciphers including **Caesar, Vigenère and substitution ciphers**. Built a Python script supporting Caesar shift 13, Vigenère with the key `MARVEL`, and the substitution mapping `A→D, B→E`.
+
+### Cipher Concepts
+
+Caesar encryption uses `C = (P + K) mod 26`, where `P` is the plaintext value, `K` is the shift, and `C` is the ciphertext value. Vigenère uses changing shifts based on a repeating keyword, making simple brute-force attacks harder than Caesar. For `CYBERSECURITY` with key `KEY`, the ciphertext is `MCZOVQOGSBMRI`.
+
+The MARVEL challenge used the ciphertext `HIQR{QRCPBAvat_ZNXRAG}` with ROT13.
+
+**Python file:** [task22_cipher_breaker.py](Caesar-Cipher.py)
+
+---
+
+## Task 23: CyberSecurity Principles - CIA
 Introduced the **CIA Triad**:
 
 * **Confidentiality:** Prevents unauthorized access.
@@ -589,18 +743,25 @@ Introduced the **CIA Triad**:
 
 ---
 
-## 23: CIA Triad - Explanation (Task 24)
+## Task 24: CIA Triad - Explanation
 
 Explored real-world examples of Confidentiality, Integrity and Availability and understood how encryption, access controls, and reliable infrastructure help protect these principles.
 
 ---
 
-## 24: Red Teaming (Task 25)
+## Task 25: Red Teaming
 
 Introduced offensive security and ethical hacking. Learned how penetration testing proactively identifies vulnerabilities by testing systems from an attacker's perspective within an authorized scope.
 
 ---
 
-## 25: Red Teaming - Practical (Task 26)
+## Task 26: Red Teaming - Practical
 
 Learned key concepts including red teaming, penetration testing, vulnerabilities, exploits and scope. Practised basic web enumeration by checking potential hidden paths and learned how **Gobuster** can automate directory discovery.
+
+---
+
+## Room Completion Screenshot
+
+![Task 22 Room Completion](Room-Completed.png)
+
