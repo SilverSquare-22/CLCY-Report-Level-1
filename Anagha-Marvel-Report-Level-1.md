@@ -1,3 +1,5 @@
+**[🔗 Jump to MARVEL report continuation](#rolling-update)**
+
 # Cloud Computing
 
 
@@ -10,6 +12,7 @@ In this task, Git and GitHub workflows were practiced to understand collaborativ
 ### Understanding Version Control and Distributed Repositories
 
 Version control helps track changes in source code over time. Git is a distributed version control system that allows multiple developers to work collaboratively on the same project.
+
 
 **Commands Used:**
 
@@ -24,14 +27,15 @@ git push -u origin main
 
 **Screenshots:**
 
-![SS1](GitBash-SS-1.png)
-![SS2](GitBash-SS-2.png)
+![GitBash (Initialize & Add)](https://github.com/SilverSquare-22/CLCY-Report-Level-1/blob/main/GitBash-SS-1.png)
+![GitBash (Commit & Push)](https://github.com/SilverSquare-22/CLCY-Report-Level-1/blob/main/GitBash-SS-2.png)
 
 ---
 
 ### Solving Merge Conflicts using Git Rebase
 
 Git rebase helps integrate changes from one branch into another while maintaining a cleaner commit history.
+
 
 **Commands Used:**
 
@@ -42,9 +46,9 @@ git rebase --continue
 
 **Screenshots:**
 
-![SS5](GitBash-SS-5.png)
-![SS6](GitBash-SS-6.png)
-![SS7](GitBash-SS-7.png)
+![GitBash (Rebase) - 1](https://github.com/SilverSquare-22/CLCY-Report-Level-1/blob/main/GitBash-SS-5.png)
+![Git (Rebase) - 2](https://github.com/SilverSquare-22/CLCY-Report-Level-1/blob/main/GitBash-SS-6.png)
+![Git (Rebase) - 3](https://github.com/SilverSquare-22/CLCY-Report-Level-1/blob/main/GitBash-SS-7.png)
 
 ---
 
@@ -52,7 +56,8 @@ git rebase --continue
 
 Branches are used to develop features independently without affecting the main branch.
 
-**Commands Used:
+
+**Commands Used:**
 
 ```
 git checkout -b feature-branch
@@ -61,8 +66,8 @@ git branch
 
 **Screenshots:**
 
-![SS3](GitBash-SS-3.png)
-![SS4](GitBash-SS-4.png)
+![GitBash (Branching)](https://github.com/SilverSquare-22/CLCY-Report-Level-1/blob/main/GitBash-SS-3.png)
+![GitBash (Merging)](https://github.com/SilverSquare-22/CLCY-Report-Level-1/blob/main/GitBash-SS-4.png)
 
 ---
 
@@ -73,14 +78,15 @@ An open-source repository was explored and contributions were made through commi
 
 **Screenshots:**
 
-![GSS1](GitHub-SS-1.png)
-![GSS2](GitHub-SS-2.png)
+![GitHub (Repository)](https://github.com/SilverSquare-22/CLCY-Report-Level-1/blob/main/GitHub-SS-1.png)
+![GitHub (Pull Request)](https://github.com/SilverSquare-22/CLCY-Report-Level-1/blob/main/GitHub-SS-2.png)
 
 ---
 
 ### Using Git Revert and Git Cherry-Pick
 
 Git revert is used to undo commits safely, while git cherry-pick applies selected commits from one branch to another.
+
 
 **Commands Used:**
 
@@ -91,14 +97,15 @@ git cherry-pick <commit-id>
 
 **Screenshots:**
 
-![SS9](GitBash-SS-9.png)
-![SS10](GitBash-SS-10.png)
+![GitBash (Revert)](https://github.com/SilverSquare-22/CLCY-Report-Level-1/blob/main/GitBash-SS-9.png)
+![GitBash (Cherry-Pick)](https://github.com/SilverSquare-22/CLCY-Report-Level-1/blob/main/GitBash-SS-10.png)
 
 ---
 
 ### Customized Git Workflow using Git Config
 
 Git config allows customisation of user identity and workflow settings. It can also be used to view the details, if already set.
+
 
 **Commands Used:**
 
@@ -107,9 +114,9 @@ git config --global user.name
 git config --global user.email
 ```
 
-**Screenshots:**
+**Screenshot:**
 
-![SS11](GitBash-SS-11.png)
+![GitBash (Config)](https://github.com/SilverSquare-22/CLCY-Report-Level-1/blob/main/GitBash-SS-11.png)
 
 ---
 
@@ -136,6 +143,7 @@ git config --global user.email
 
 Docker images were pulled from Docker Hub and stored locally in the system.
 
+
 **Commands Used:**
 
 ```
@@ -145,13 +153,14 @@ docker images
 
 **Screenshot:**
 
-![DSS1](Docker-1.png)
+![Docker Images](https://github.com/SilverSquare-22/CLCY-Report-Level-1/blob/main/Docker-1.png)
 
 ---
 
 ### Running Containers using Docker CLI
 
 An nginx container was created and executed locally using Docker CLI commands. Port mapping was used to access the application through the browser.
+
 
 **Commands Used:**
 
@@ -160,15 +169,16 @@ docker run -d --name mynginx -p 8080:80 nginx
 docker ps
 ```
 
-**Screenshots:**
+**Screenshot:**
 
-![DSS2](Docker-2.jpg)
+![Docker nginx](https://github.com/SilverSquare-22/CLCY-Report-Level-1/blob/main/Docker-2.png)
 
 ---
 
 ### Viewing Logs and Inspecting Container State
 
 Docker logs and inspect commands were used to monitor container activity and understand container status information.
+
 
 **Commands Used:**
 
@@ -177,15 +187,16 @@ docker logs mynginx --tail 5
 docker inspect mynginx --format='Status: {{.State.Status}}'
 ```
 
-Screenshot:
+**Screenshot:**
 
-![DSS3](Docker-3.png)
+![Docker (Logs and Container State)](https://github.com/SilverSquare-22/CLCY-Report-Level-1/blob/main/Docker-3.png)
 
 ---
 
 ### Managing Container Lifecycle
 
 Container lifecycle operations such as restart, stop, and remove were performed successfully.
+
 
 **Commands Used:**
 
@@ -196,11 +207,11 @@ docker rm mynginx
 docker rmi nginx
 ```
 
-Screenshots:
+**Screenshots:**
 
-![DSS4](Docker-4.jpg)
-![DSS5](Docker-5.jpg)
-![DSS6](Docker-6.png)
+![Docker (Container Lifecycle) - 1](https://github.com/SilverSquare-22/CLCY-Report-Level-1/blob/main/Docker-4.png)
+![Docker (Container Lifecycle) - 2](https://github.com/SilverSquare-22/CLCY-Report-Level-1/blob/main/Docker-5.png)
+![Docker (Container Lifecycle) - 3](https://github.com/SilverSquare-22/CLCY-Report-Level-1/blob/main/Docker-6.png)
 
 ---
 
@@ -217,6 +228,7 @@ FROM nginx:latest
 COPY index.html /usr/share/nginx/html/index.html
 ```
 
+
 **Commands Used:**
 
 ```
@@ -229,8 +241,8 @@ docker rmi mywebsite
 
 **Screenshots:**
 
-![DFSS1](Dockerfile-1.png)
-![DFSS2](Dockerfile-2.jpg)
+![Docker Build](https://github.com/SilverSquare-22/CLCY-Report-Level-1/blob/main/Dockerfile-1.png)
+![Docker Run](https://github.com/SilverSquare-22/CLCY-Report-Level-1/blob/main/Dockerfile-2.png)
 
 ---
 
@@ -255,6 +267,7 @@ The connection was established successfully and the Amazon Linux environment was
 
 Nginx was installed and configured as a web server on the EC2 instance.
 
+
 **Commands Used:**
 
 ```bash
@@ -277,10 +290,9 @@ EC2 instance types determine the available vCPUs, memory, and other resources. C
 
 ### Screenshots
 
-![EC21](AWS-EC2-1.png)
-![EC22](AWS-EC2-2.png)
-![EC23](AWS-EC2-3.png)
-![EC25](AWS-EC2-4.png)
+![EC2 (nginx Status)](https://github.com/SilverSquare-22/CLCY-Report-Level-1/blob/main/AWS-EC2-1.png)
+![EC2 (Instance Summary)](https://github.com/SilverSquare-22/CLCY-Report-Level-1/blob/main/AWS-EC2-2.png)
+![EC2 (nginx Welcome Page)](https://github.com/SilverSquare-22/CLCY-Report-Level-1/blob/main/AWS-EC2-3.png)
 
 ---
 
@@ -320,6 +332,7 @@ spec:
 
 The Minikube cluster was started using the Docker driver and the Pod manifest was deployed using kubectl.
 
+
 **Commands Used:**
 
 ```
@@ -334,6 +347,7 @@ The manifest was successfully applied and the nginx-pod was created.
 
 The Pod's status was verified and additional information was obtained using kubectl.
 
+
 **Commands Used:**
 
 ```
@@ -346,9 +360,9 @@ The Pod reached the Running state with the Nginx container marked as ready. The 
 
 ### Screenshots
 
-![K8S1](Kubernetes-1.png)
-![K8S2](Kubernetes-2.png)
-![K8S3](Kubernetes-3.png)
+![K8S (minikube Status)](https://github.com/SilverSquare-22/CLCY-Report-Level-1/blob/main/Kubernetes-1.png)
+![K8S (Pod Manifest)](https://github.com/SilverSquare-22/CLCY-Report-Level-1/blob/main/Kubernetes-2.png)
+![K8S (Pod Logs)](https://github.com/SilverSquare-22/CLCY-Report-Level-1/blob/main/Kubernetes-3.png)
 
 ---
 
@@ -361,9 +375,10 @@ AWS IAM and S3 were explored using the AWS CLI. An IAM user was created and conf
 
 The AWS CLI was configured with IAM credentials and used to manage an S3 bucket. A test file was created, uploaded to the bucket, listed, downloaded, and deleted.
 
+
 **Commands Used:**
 
-```powershell
+```
 aws s3 mb s3://clcy-s3-bucket-silversquare22 --region ap-southeast-2
 aws s3 cp test.txt s3://clcy-s3-bucket-silversquare22/
 aws s3 ls s3://clcy-s3-bucket-silversquare22/
@@ -382,10 +397,10 @@ The restricted permissions were validated by attempting operations outside the p
 
 ### Screenshots
 
-![AWSIAM1](AWS-IAM-S3-1.png)
-![AWSIAM2](AWS-IAM-S3-2.png)
-![AWSIAM3](AWS-IAM-S3-3.png)
-![AWSIAM4](AWS-IAM-S3-4.png)
+![S3 (Bucket Lifecycle)](https://github.com/SilverSquare-22/CLCY-Report-Level-1/blob/main/AWS-IAM-S3-1.png)
+![S3 (Custom Policy Details)](https://github.com/SilverSquare-22/CLCY-Report-Level-1/blob/main/AWS-IAM-S3-2.png)
+![S3 (Access Denied)](https://github.com/SilverSquare-22/CLCY-Report-Level-1/blob/main/AWS-IAM-S3-3.png)
+![S3 (Policy Restriction Application)](https://github.com/SilverSquare-22/CLCY-Report-Level-1/blob/main/AWS-IAM-S3-4.png)
 
 ---
 
@@ -420,6 +435,7 @@ spec:
 
 The Deployment was configured with 3 replicas, allowing Kubernetes to maintain three instances of the Nginx application.
 
+
 **Commands Used:**
 
 ```
@@ -446,6 +462,7 @@ spec:
         - port: 80
         targetPort: 80
 ```
+
 
 **Commands Used:**
 
@@ -474,6 +491,7 @@ spec:
         targetPort: 80
         nodePort: 30080
 ```
+
 
 **Commands Used:**
 
@@ -530,10 +548,10 @@ The rollout completed successfully, demonstrating how Kubernetes updates Pods ma
 
 ### Screenshots
 
-![K8SD1](Kubernetes-Deploy-1.png)
-![K8SD2](Kubernetes-Deploy-2.png)
-![K8SD3](Kubernetes-Deploy-3.png)
-![K8SD4](Kubernetes-Deploy-4.png)
+![K8S (Apply YAML Files)](https://github.com/SilverSquare-22/CLCY-Report-Level-1/blob/main/Kubernetes-Deploy-1.png)
+![K8S (nginx Welcome Page)](https://github.com/SilverSquare-22/CLCY-Report-Level-1/blob/main/Kubernetes-Deploy-2.png)
+![K8S (Scaling Deployment)](https://github.com/SilverSquare-22/CLCY-Report-Level-1/blob/main/Kubernetes-Deploy-3.png)
+![K8S (Deployment Status)](https://github.com/SilverSquare-22/CLCY-Report-Level-1/blob/main/Kubernetes-Deploy-4.png)
 
 ---
 
@@ -546,13 +564,13 @@ Kubernetes ConfigMaps and Secrets were used to manage application configuration 
 
 The ConfigMap was applied and the `aws-env-test` Deployment was created successfully. The resulting Pod was running successfully.
 
-![K8S8-1](K8S8-1.png)
+![K8S (ConfigMap)](https://github.com/SilverSquare-22/CLCY-Report-Level-1/blob/main/K8S8-1.png)
 
 ### Verifying Environment Variables
 
 The Pod was accessed using `kubectl exec` to verify the injected values. The ConfigMap values were displayed, while the AWS credentials were checked only for their presence using `SET`, keeping the actual credentials hidden.
 
-![K8S8-2](K8S8-2.png)
+![K8S (Verify env Variables)](https://github.com/SilverSquare-22/CLCY-Report-Level-1/blob/main/K8S8-2.png)
 
 ---
 
@@ -565,29 +583,28 @@ A Flask-based file-upload application was containerized using Docker and deploye
 
 The Flask application was built into a Docker image named `s3-upload-app:1.0` and deployed as a Kubernetes Pod.
 
-![K8S9-1](K8S9-1.png)
-
-![K8S9-2](K8S9-2.png)
+![K8S (Containerize & Deploy)](https://github.com/SilverSquare-22/CLCY-Report-Level-1/blob/main/K8S9-1.png)
+![K8S (Pod Details)](https://github.com/SilverSquare-22/CLCY-Report-Level-1/blob/main/K8S9-2.png)
 
 ### Exposing the Application
 
 A NodePort Service was created for the application, allowing the Flask interface to be accessed through the Minikube-generated local URL.
 
-![K8S9-3](K8S9-3.png)
+![K8S (NodePort)](https://github.com/SilverSquare-22/CLCY-Report-Level-1/blob/main/K8S9-3.png)
 
 ### Uploading and Verifying the File
 
 The Flask application successfully received the uploaded file, as shown by the successful `POST` request in the application logs.
 
-![K8S9-4](K8S9-4.png)
+![K8S (Upload Logs)](https://github.com/SilverSquare-22/CLCY-Report-Level-1/blob/main/K8S9-4.png)
 
 The application interface confirmed that `test-upload.txt` was uploaded successfully.
 
-![K8S9-5](K8S9-5.png)
+![K8S (Webpage UI)](https://github.com/SilverSquare-22/CLCY-Report-Level-1/blob/main/K8S9-5.png)
 
 Finally, the uploaded file was verified in the AWS S3 bucket, confirming that the file was successfully transferred from the Kubernetes-hosted application to cloud storage.
 
-![K8S9-6](K8S9-6.png)
+![K8S (S3 Bucket in AWS Console)](https://github.com/SilverSquare-22/CLCY-Report-Level-1/blob/main/K8S9-6.png)
 
 ---
 
@@ -730,11 +747,12 @@ Caesar encryption uses `C = (P + K) mod 26`, where `P` is the plaintext value, `
 
 The MARVEL challenge used the ciphertext `HIQR{QRCPBAvat_ZNXRAG}` with ROT13.
 
-**Python file:** [task22_cipher_breaker.py](Caesar-Cipher.py)
+[🔗 View Python File](https://github.com/SilverSquare-22/CLCY-Report-Level-1/blob/main/Caesar-Cipher.py)
 
 ---
 
 ## Task 23: CyberSecurity Principles - CIA
+
 Introduced the **CIA Triad**:
 
 * **Confidentiality:** Prevents unauthorized access.
@@ -763,5 +781,5 @@ Learned key concepts including red teaming, penetration testing, vulnerabilities
 
 ## Room Completion Screenshot
 
-![Task 22 Room Completion](Room-Completed.png)
+![Room Completion](https://github.com/SilverSquare-22/CLCY-Report-Level-1/blob/main/Room-Completed.png)
 
