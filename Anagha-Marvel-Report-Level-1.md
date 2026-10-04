@@ -171,7 +171,7 @@ docker ps
 
 **Screenshot:**
 
-![Docker nginx](https://github.com/SilverSquare-22/CLCY-Report-Level-1/blob/main/Docker-2.png)
+![Docker nginx](https://github.com/SilverSquare-22/CLCY-Report-Level-1/blob/main/Docker-2.jpg)
 
 ---
 
@@ -209,8 +209,8 @@ docker rmi nginx
 
 **Screenshots:**
 
-![Docker (Container Lifecycle) - 1](https://github.com/SilverSquare-22/CLCY-Report-Level-1/blob/main/Docker-4.png)
-![Docker (Container Lifecycle) - 2](https://github.com/SilverSquare-22/CLCY-Report-Level-1/blob/main/Docker-5.png)
+![Docker (Container Lifecycle) - 1](https://github.com/SilverSquare-22/CLCY-Report-Level-1/blob/main/Docker-4.jpg)
+![Docker (Container Lifecycle) - 2](https://github.com/SilverSquare-22/CLCY-Report-Level-1/blob/main/Docker-5.jpg)
 ![Docker (Container Lifecycle) - 3](https://github.com/SilverSquare-22/CLCY-Report-Level-1/blob/main/Docker-6.png)
 
 ---
@@ -242,7 +242,7 @@ docker rmi mywebsite
 **Screenshots:**
 
 ![Docker Build](https://github.com/SilverSquare-22/CLCY-Report-Level-1/blob/main/Dockerfile-1.png)
-![Docker Run](https://github.com/SilverSquare-22/CLCY-Report-Level-1/blob/main/Dockerfile-2.png)
+![Docker Run](https://github.com/SilverSquare-22/CLCY-Report-Level-1/blob/main/Dockerfile-2.jpg)
 
 ---
 
